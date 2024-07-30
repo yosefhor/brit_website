@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../logo.jpeg";
 import "bootstrap/dist/css/bootstrap.css";
 import { useTranslation } from 'react-i18next';
@@ -10,6 +10,7 @@ import Select from 'react-select';
 function Navbar() {
     const { t, i18n } = useTranslation();
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    console.log(windowWidth);
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
@@ -86,10 +87,6 @@ function Navbar() {
         }),
     };
 
-    const Header = useRef();
-    // const headerHeight = Header.current.offsetHeight;
-    // console.log(headerHeight);
-
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
@@ -100,12 +97,12 @@ function Navbar() {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, []);   
 
     return (
-        <header ref={Header} className=" sticky-top">
+        <header className=" sticky-top">
             <div>
-                <div className=" px-3 container-fluid align-content-center bg-info-subtle" style={{ height: '6em' }}>
+                <div className=" px-3 container-fluid align-content-center bg-info-subtle" style={{ height: '100px' }}>
                     <div className="row align-items-center">
                         <div className="col-auto mx-3 d-none d-md-inline-flex">
                             <a href="/">
@@ -115,9 +112,9 @@ function Navbar() {
                         <div className="col d-flex justify-content-between align-items-center">
                             <h1 className="text-danger fs-2">{t('header.title')}</h1>
                             <div className="d-none d-md-flex mx-4">
-                                <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('de')}><img className="" src={germanyFlag} />Deutsch</button>
-                                <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('en')}><img className="" src={usaFlag} />English</button>
-                                <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('he')}><img className="" src={israelFlag} />עברית</button>
+                                <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('de')}><img alt="German flag" src={germanyFlag} />Deutsch</button>
+                                <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('en')}><img alt="USA flag" src={usaFlag} />English</button>
+                                <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('he')}><img alt="Israel flag" src={israelFlag} />עברית</button>
                             </div>
                             {windowWidth < 768 && (
                                 <Select options={filteredOptions} defaultValue={options.find(option => option.value === savedLanguage)} styles={customStyles} isSearchable={false} components={{ IndicatorSeparator: () => null }} onChange={(e) => changeLanguage(e.value)} />

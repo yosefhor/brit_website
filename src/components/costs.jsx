@@ -1,8 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export default function
-    () {
+export default function Cost() {
     const { t } = useTranslation();
 
     return (

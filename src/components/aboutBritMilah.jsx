@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import { useTranslation } from 'react-i18next';
-import {headerHeight} from './header';
 
 export default function AboutBritMilah() {
     const { t } = useTranslation();
@@ -8,7 +7,7 @@ export default function AboutBritMilah() {
     const ArtikelüberBeschneidung = useRef();
     const handleScroll = (elementRef) => {
         window.scrollTo({
-            top: elementRef.current.offsetTop - 220,
+            top: elementRef.current.offsetTop - 225,
         });
     };
 
@@ -25,7 +24,7 @@ export default function AboutBritMilah() {
                             {t('about_brit_milah.sections.0.content', { returnObjects: true }).map((paragraph, index) => (
                                 <p key={index}>{paragraph}</p>
                             ))}
-                            <h4 className=' fw-normal'>{t('about_brit_milah.sections.0.reference')}<a className=' btn btn-link fs-4 pt-0 ps-0' onClick={() => { handleScroll(ArtikelüberBeschneidung) }} >{t('about_brit_milah.sections.0.link')}</a></h4>
+                            <h4 className=' fw-normal'>{t('about_brit_milah.sections.0.reference')}<button className=' btn btn-link fs-4 pt-0 ps-0 btn-outline-light' onClick={() => { handleScroll(ArtikelüberBeschneidung) }} >{t('about_brit_milah.sections.0.link')}</button></h4>
                         </div>
                     </div>
                 </div>
