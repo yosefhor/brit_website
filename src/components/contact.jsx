@@ -1,94 +1,133 @@
 import React, { useRef, useState } from 'react';
-import emailjs, { send } from 'emailjs-com';
+import { Alert } from 'react-bootstrap';
+import emailjs from 'emailjs-com';
+import { useTranslation } from 'react-i18next';
 
-export default function () {
-    
-    const [name, setName] = useState('')
-    const [lineNumber, setLineNumber] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
-    const [email, setEmail] = useState('')
-    const [message, setMessage] = useState('')
-    
+export default function ContactForm() {
+    const { t } = useTranslation();
+
+    const [showAlert, setShowAlert] = useState(false);
+
+    const [name, setName] = useState('');
+    const [lineNumber, setLineNumber] = useState('');
+    const [prefix, setPrefix] = useState('+49');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+
     const clearFields = () => {
         setName('');
         setLineNumber('');
-        setPhoneNumber('');
+        setPrefix('+49');
+        setPhoneNumber(``);
         setEmail('');
-        setMessage('')
-    }
-    
-    // const contactForm = useRef();
+        setMessage('');
+    };
+
+    const form = useRef();
+
+    emailjs.init('bId1Vj9Ukr8AMku4Q');
+
+    const sendWhatsAppNotification = async (formData) => {
+        const phoneNumber = '972552706269';
+        const apiKey = '3815595';
+        const lineNumberField = formData.lineNumber ? `\nline Number: ${formData.lineNumber}` : '';
+        const emailField = formData.email ? `\nEmail: ${formData.email}` : '';
+        const messageField = formData.message ? `\nMessage: ${formData.message}` : '';
+        const whatsappMessage = `מישהו בדיוק פנה אליך דרך האתר:\nSomeone just contacted you through the website:\nName: ${formData.name}${lineNumberField}\nPhone: ${formData.prefix} ${formData.phoneNumber}${emailField}${messageField}`;
+
+        const url = `https://api.callmebot.com/whatsapp.php?phone=${phoneNumber}&text=${encodeURIComponent(whatsappMessage)}&apikey=${apiKey}`;
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            console.log('WhatsApp notification sent successfully');
+        } catch (error) {
+            console.error('Error sending WhatsApp notification:', error);
+        }
+    };
 
     const sendEmail = (e) => {
         e.preventDefault();
-        
-        emailjs.send('service_j0xo17o','template_oxlh861',
-            {
-            name,
-        //     lineNumber,
-        //     phoneNumber,
-            email,
-            message
-        },
-        // contactForm.current,
-        // e.target,
-         {PublicKey: 'bId1Vj9Ukr8AMku4Q'})
-         .then((response)=>{
-            console.log(e.target);
-            alert('SUCCESS!')
-            console.log('SUCCESS!', response.status, response.text);
-            clearFields();
-        }, (err) =>{
-            console.log(e.target);
-            console.log('FAILED SEND EMAIL!', err);
-        });
+        emailjs.sendForm('service_j0xo17o', 'template_oxlh861', form.current, 'bId1Vj9Ukr8AMku4Q')
+            .then(() => {
+                console.log('email sent successfully!');
+                sendWhatsAppNotification({
+                    name,
+                    lineNumber,
+                    prefix,
+                    phoneNumber,
+                    email,
+                    message
+                });
+                console.log('whatsApp message sent successfully!');
+                clearFields();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                setTimeout(() => {
+                    setShowAlert(true);
+                    setTimeout(() => {
+                        setShowAlert(false);
+                    }, 10000);
+                }, 500);
+            }, (err) => {
+                console.log('FAILED SEND EMAIL!', err);
+            });
     };
+
     return (
         <div>
-            <h1 className=' mt-4'>Kontakt</h1>
+            {showAlert && (
+                <Alert variant="success" className="mt-3">
+                    {t('contact.message')}
+                </Alert>
+            )}
+            <h1 className='mt-4'>{t('contact.title')}</h1>
             <div className='lead fw-normal'>
                 <p>
-                    <strong>Rabbiner David Goldberg</strong><br />
-                    Diplomierter und qualifizierter Mohel zur Ausführung von Beschneidungen
+                    <strong>{t('contact.content.rabbi.title')}</strong><br />
+                    {t('contact.content.rabbi.description')}
                 </p>
-                <br />
                 <p>
-                    Telefon: <a href="tel:+49928151741">+49(0)9281-51741</a><br />
-                    Mobil: <a href="tel:+491728551010">+49(0)172-8551010</a><br />
-                    eMail: <a href="mailto:ravgoldberg.mohel@gmx.de">ravgoldberg.mohel@gmx.de</a><br />
-                    Homepage: <a href="http://www.beschneidung-mohel.de" target="_blank">www.beschneidung-mohel.de</a><br />
+                    {t('contact.content.contactInfo.landLine.title')}: <a href="tel:+49928151741">+49(0)9281-51741</a><br />
+                    {t('contact.content.contactInfo.phone.title')}: <a href="tel:+491728551010">+49(0)172-8551010</a><br />
+                    {t('contact.content.contactInfo.email.title')}: <a href="mailto:goldbergmirjam@gmail.com">goldbergmirjam@gmail.com </a><br />
+                    {t('contact.content.contactInfo.homepage.title')}: <a href="http://www.beschneidung-mohel.de" target="_blank">www.beschneidung-mohel.de</a><br />
                 </p>
-                <br />
-                <div className=' row-cols-xl-2'>
-                    <p className=' fw-medium'>
-                        Bitte nutzen Sie das Kontaktformular um mir eine Nachricht zu schicken.
-                        Ich werde sie so schnell wie möglich bearbeiten bzw. Sie telefonisch kontaktieren.
+                <div className='row-cols-xl-2'>
+                    <p className='fw-medium'>
+                        {t('contact.content.contactForm.description')}
                     </p>
-                    <form onSubmit={sendEmail}>
-                        <label className=' form-label' htmlFor='name'>Vollständiger Name:<span className=' text-danger'>*</span></label>
-                        <div className=' input-group'>
-                            <span className=' input-group-text'>
-                                <i class="bi bi-person-fill"></i>
+                    <form ref={form} onSubmit={sendEmail}>
+                        <label className='form-label' htmlFor='name'>{t('contact.content.contactForm.labels.name.title')}<span className='text-danger'>*</span></label>
+                        <div className='input-group'>
+                            <span className='input-group-text'>
+                                <i className="bi bi-person-fill"></i>
                             </span>
-                            <input required className=' form-control' type='text' placeholder='Type your full name...' value={name} onChange={(e) => { setName(e.target.value) }}></input>
+                            <input name='name' required className='form-control' type='text' placeholder={t('contact.content.contactForm.labels.name.placeholder')} value={name} onChange={(e) => { setName(e.target.value) }}></input>
                         </div>
 
-                        {/* <label className=' form-label' htmlFor='lineNumber'>Telefon:</label>
-                        <div className=' input-group'>
-                            <span className=' input-group-text'>
-                                <i class="bi bi-telephone-fill"></i>
+                        <label className='form-label' htmlFor='lineNumber'>{t('contact.content.contactForm.labels.lineNumber.title')}</label>
+                        <div className='input-group'>
+                            <span className='input-group-text'>
+                                <i className="bi bi-telephone-fill"></i>
                             </span>
-                            <input className=' form-control' type='text' placeholder='Type your landline number...' value={lineNumber} onChange={(e) => { setLineNumber(e.target.value) }}></input>
+                            <input name='lineNumber' className='form-control' inputMode='numeric' type='text' placeholder={t('contact.content.contactForm.labels.lineNumber.placeholder')} value={lineNumber} onChange={(e) => { setLineNumber(e.target.value) }} onKeyDown={(event) => { if (/[A-Za-zא-ת]/.test(event.key) && event.key !== 'Backspace' && !(event.ctrlKey)) { event.preventDefault(); } }}></input>
                         </div>
 
-                        <label className=' form-label' htmlFor='phoneNumber'>Mobil:<span className=' text-danger'>*</span></label>
-                        <div className=' input-group'>
-                            <span className=' input-group-text'>
-                                <i class="bi bi-tablet-fill"></i>
+                        <label className='form-label' htmlFor='phoneNumber'>{t('contact.content.contactForm.labels.phoneNumber.title')}<span className='text-danger'>*</span></label>
+                        <div className='input-group'>
+                            <span className='input-group-text'>
+                                <i className="bi bi-tablet-fill"></i>
                             </span>
-                            <select className=' required col-3 input-group-text'>
-                                <option value={''}>Kürzel wählen</option>
+                            <select id='prefix' name='prefix' className='required col-3 input-group-text' value={prefix} onChange={(e) => { setPrefix(e.target.value) }}>
                                 <option value="+49">Germany (+49)</option>
+                                <option value="" disabled>──────────</option>
+                                <option value="" disabled>EU countries:</option>
                                 <option value="" disabled>──────────</option>
                                 <option value="+43">Austria (+43)</option>
                                 <option value="+32">Belgium (+32)</option>
@@ -128,6 +167,8 @@ export default function () {
                                 <option value="+90">Turkey (+90)</option>
                                 <option value="+380">Ukraine (+380)</option>
                                 <option value="+44">United Kingdom (+44)</option>
+                                <option value="" disabled>──────────</option>
+                                <option value="" disabled>Rest of the world:</option>
                                 <option value="" disabled>──────────</option>
                                 <option value="+93">Afghanistan (+93)</option>
                                 <option value="+213">Algeria (+213)</option>
@@ -275,26 +316,26 @@ export default function () {
                                 <option value="+260">Zambia (+260)</option>
                                 <option value="+263">Zimbabwe (+263)</option>
                             </select>
-                            <input required className=' form-control' type='text' placeholder='Type your cellphone number...' value={phoneNumber} onChange={(e) => { setPhoneNumber(e.target.value) }}></input>
-                        </div> */}
-
-                        <label className=' form-label' htmlFor='email'>Email:<span className=' text-danger'>*</span></label>
-                        <div className=' input-group'>
-                            <span className=' input-group-text'>
-                                <i class="bi bi-envelope-at-fill"></i>
-                            </span>
-                            <input required className=' form-control' type='email' placeholder='Type your name...' value={email} onChange={(e) => { setEmail(e.target.value) }}></input>
+                            <input name='phoneNumber' required className='form-control' type='text' inputMode='numeric' placeholder={t('contact.content.contactForm.labels.phoneNumber.placeholder')} value={phoneNumber} onChange={(e) => { setPhoneNumber(e.target.value) }} onKeyDown={(event) => { if (/[A-Za-zא-ת]/.test(event.key) && event.key !== 'Backspace' && !(event.ctrlKey)) { event.preventDefault(); } }}></input>
                         </div>
 
-                        <label className=' form-label' htmlFor='message'>Nachricht:</label>
-                        <textarea className=' form-control' type='email' placeholder='if you have any questions, requests etc.' value={message} onChange={(e) => { setMessage(e.target.value) }}></textarea>
-                        <div className=' row justify-content-around'>
-                            <button type='button' onClick={clearFields} className='col-3 my-3 btn btn-outline-secondary'>Felder leeren</button>
-                            <button type='submit' className='col-3 my-3 btn btn-success' value={send}>Senden</button>
+                        <label className='form-label' htmlFor='email'>{t('contact.content.contactForm.labels.email.title')}</label>
+                        <div className='input-group'>
+                            <span className='input-group-text'>
+                                <i className="bi bi-envelope-at-fill"></i>
+                            </span>
+                            <input name='email' className='form-control' type='email' placeholder={t('contact.content.contactForm.labels.email.placeholder')} value={email} onChange={(e) => { setEmail(e.target.value) }}></input>
+                        </div>
+
+                        <label className='form-label' htmlFor='message'>{t('contact.content.contactForm.labels.message.title')}</label>
+                        <textarea name='message' className='form-control' placeholder={t('contact.content.contactForm.labels.message.placeholder')} value={message} style={{height: '10em'}} onChange={(e) => { setMessage(e.target.value) }}></textarea>
+                        <div className='row justify-content-around'>
+                            <button type='button' onClick={clearFields} className='col-3 my-3 btn btn-outline-secondary'>{t('contact.content.contactForm.buttons.clearFields')}</button>
+                            <button type='submit' className='col-3 my-3 btn btn-success' value='send'>{t('contact.content.contactForm.buttons.send')}</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    )
+    );
 }
