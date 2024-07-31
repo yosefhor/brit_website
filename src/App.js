@@ -5,7 +5,6 @@ import './App.css';
 import AppRoute from './appRoute.jsx';
 import { ToastContainer } from 'react-toastify';
 
-
 const GlobalStyle = createGlobalStyle`body {direction: ${props => props.dir}}`;
 
 function App() {

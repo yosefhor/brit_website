@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// eslint-disable-next-line no-unused-vars
 import i18n from './translations/i18n';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
