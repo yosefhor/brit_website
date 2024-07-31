@@ -5,12 +5,12 @@ import FloatingWhatsAppButton from './floatingWhatsAppButton.jsx';
 
 export default function Layout() {
     return (
-        <div>
+        <>
             <Header />
             <FloatingWhatsAppButton />
             <div className=' container mb-5'>
                 <Outlet />
             </div>
-        </div>
+        </>
     )
 }

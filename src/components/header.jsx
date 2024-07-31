@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import logo from "../logo.jpeg";
 import "bootstrap/dist/css/bootstrap.css";
 import { useTranslation } from 'react-i18next';
@@ -6,40 +5,38 @@ import germanyFlag from '../germany-flag.ico';
 import usaFlag from '../united-states-flag.ico';
 import israelFlag from '../israel-flag.ico';
 import Select from 'react-select';
+import '../App.css';
+import { Link } from "react-router-dom";
 
 function Navbar() {
     const { t, i18n } = useTranslation();
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    console.log(windowWidth);
+    const savedLanguage = localStorage.getItem('language') || 'de';
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
         localStorage.setItem('language', lng);
     };
 
-    const savedLanguage = localStorage.getItem('language') || 'de';
-
     const options = [
         {
             value: 'de', label: (
                 <div className=" options">
-                    <img src={germanyFlag} alt="German flag" />
+                    <img src={germanyFlag} alt="German flag" aria-label="German" />
                 </div>)
         },
         {
             value: 'en', label: (
                 <div>
-                    <img src={usaFlag} alt="USA flag" />
+                    <img src={usaFlag} alt="USA flag" aria-label="English" />
                 </div>)
         },
         {
             value: 'he', label: (
                 <div>
-                    <img src={israelFlag} alt="Israel flag" />
+                    <img src={israelFlag} alt="Israel flag" aria-label="Hebrew" />
                 </div>)
         }
     ];
-
     const filteredOptions = options.filter(option => option.value !== savedLanguage);
 
     const customStyles = {
@@ -87,42 +84,26 @@ function Navbar() {
         }),
     };
 
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);   
-
     return (
         <header className=" sticky-top">
-            <div>
                 <div className=" px-3 container-fluid align-content-center bg-info-subtle" style={{ height: '100px' }}>
                     <div className="row align-items-center">
                         <div className="col-auto mx-3 d-none d-md-inline-flex">
-                            <a href="/">
+                            <Link to="/">
                                 <img src={logo} alt="Logo" className="me-5 rounded-3 shadow" style={{ height: '5em' }} />
-                            </a>
+                            </Link>
                         </div>
                         <div className="col d-flex justify-content-between align-items-center">
                             <h1 className="text-danger fs-2">{t('header.title')}</h1>
-                            <div className="d-none d-md-flex mx-4">
+                            <div className="desktop-flags d-md-flex mx-4">
                                 <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('de')}><img alt="German flag" src={germanyFlag} />Deutsch</button>
                                 <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('en')}><img alt="USA flag" src={usaFlag} />English</button>
                                 <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('he')}><img alt="Israel flag" src={israelFlag} />עברית</button>
                             </div>
-                            {windowWidth < 768 && (
-                                <Select options={filteredOptions} defaultValue={options.find(option => option.value === savedLanguage)} styles={customStyles} isSearchable={false} components={{ IndicatorSeparator: () => null }} onChange={(e) => changeLanguage(e.value)} />
-                            )}
+                                <Select className="mobile-flags" options={filteredOptions} defaultValue={options.find(option => option.value === savedLanguage)} styles={customStyles} isSearchable={false} components={{ IndicatorSeparator: () => null }} onChange={(e) => changeLanguage(e.value)} />
                         </div>
                     </div>
                 </div>
-            </div>
             <div className="bg-light">
                 <nav className="container navbar navbar-expand-sm px-2">
                     <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarContent">

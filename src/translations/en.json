@@ -222,7 +222,8 @@
                 }
             }
         },
-        "message": "Your details have been successfully submitted. I will get in touch with you as soon as possible. Thank you!"
+        "successMessage": "Your details have been successfully submitted. I will get in touch with you as soon as possible. Thank you!",
+        "errorMessage": "Failed to send your message. Please try again later!"
     },
     "FloatingWhatsAppButton":{
         "chatMessage": "Hello! How can I help you?"

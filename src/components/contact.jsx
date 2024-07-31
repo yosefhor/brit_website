@@ -1,12 +1,11 @@
 import React, { useRef, useState } from 'react';
-import { Alert } from 'react-bootstrap';
 import emailjs from 'emailjs-com';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ContactForm() {
     const { t } = useTranslation();
-
-    const [showAlert, setShowAlert] = useState(false);
 
     const [name, setName] = useState('');
     const [lineNumber, setLineNumber] = useState('');
@@ -26,11 +25,9 @@ export default function ContactForm() {
 
     const form = useRef();
 
-    emailjs.init('bId1Vj9Ukr8AMku4Q');
-
     const sendWhatsAppNotification = async (formData) => {
         const phoneNumber = '972552706269';
-        const apiKey = '3815595';
+        const apiKey = process.env.REACT_APP_WHATSAPP_API;
         const lineNumberField = formData.lineNumber ? `\nline Number: ${formData.lineNumber}` : '';
         const emailField = formData.email ? `\nEmail: ${formData.email}` : '';
         const messageField = formData.message ? `\nMessage: ${formData.message}` : '';
@@ -49,11 +46,17 @@ export default function ContactForm() {
         }
     };
 
+    emailjs.init(process.env.REACT_APP_EMAILJS_USER_ID);
+
     const sendEmail = (e) => {
         e.preventDefault();
-        emailjs.sendForm('service_j0xo17o', 'template_oxlh861', form.current, 'bId1Vj9Ukr8AMku4Q')
+        emailjs.sendForm(process.env.REACT_APP_EMAILJS_SERVICE_ID, process.env.REACT_APP_EMAILJS_TEMPLATE_ID, form.current, process.env.REACT_APP_EMAILJS_USER_ID)
             .then(() => {
                 console.log('email sent successfully!');
+                toast.success(t('contact.successMessage'), {
+                    position: "bottom-center",
+                    role: "alert"
+                });
                 sendWhatsAppNotification({
                     name,
                     lineNumber,
@@ -68,24 +71,17 @@ export default function ContactForm() {
                     top: 0,
                     behavior: 'smooth'
                 });
-                setTimeout(() => {
-                    setShowAlert(true);
-                    setTimeout(() => {
-                        setShowAlert(false);
-                    }, 10000);
-                }, 500);
             }, (err) => {
+                toast.error(t('contact.errorMessage'), {
+                    position: "bottom-center",
+                    role: "alert"
+                });
                 console.log('FAILED SEND EMAIL!', err);
             });
     };
 
     return (
         <div>
-            {showAlert && (
-                <Alert variant="success" className="mt-3">
-                    {t('contact.message')}
-                </Alert>
-            )}
             <h1 className='mt-4'>{t('contact.title')}</h1>
             <div className='lead fw-normal'>
                 <p>
@@ -328,7 +324,7 @@ export default function ContactForm() {
                         </div>
 
                         <label className='form-label' htmlFor='message'>{t('contact.content.contactForm.labels.message.title')}</label>
-                        <textarea name='message' className='form-control' placeholder={t('contact.content.contactForm.labels.message.placeholder')} value={message} style={{height: '10em'}} onChange={(e) => { setMessage(e.target.value) }}></textarea>
+                        <textarea name='message' className='form-control' placeholder={t('contact.content.contactForm.labels.message.placeholder')} value={message} style={{ height: '10em' }} onChange={(e) => { setMessage(e.target.value) }}></textarea>
                         <div className='row justify-content-around'>
                             <button type='button' onClick={clearFields} className='col-3 my-3 btn btn-outline-secondary'>{t('contact.content.contactForm.buttons.clearFields')}</button>
                             <button type='submit' className='col-3 my-3 btn btn-success' value='send'>{t('contact.content.contactForm.buttons.send')}</button>

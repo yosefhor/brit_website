@@ -1,0 +1,19 @@
+@media (max-width: 768px) {
+    .desktop-flags {
+        display: none;
+    }
+
+    .mobile-flags {
+        display: block;
+    }
+}
+
+@media (min-width: 768px) {
+    .desktop-flags {
+        display: flex;
+    }
+
+    .mobile-flags {
+        display: none;
+    }
+}

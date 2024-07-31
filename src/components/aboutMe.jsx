@@ -5,7 +5,7 @@ export default function AboutMe() {
     const { t } = useTranslation();
 
     return (
-        <div>
+        <>
             <h1 className='my-4'>{t('about_me.title')}</h1>
             <ul className='lead fw-normal'>
                 {t('about_me.points', { returnObjects: true }).map((point, index) => (
@@ -17,6 +17,6 @@ export default function AboutMe() {
                     <p key={index}>{paragraph}</p>
                 ))}
             </div>
-        </div>
+        </>
     )
 }
