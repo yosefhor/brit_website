@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function NotFound() {
     return (
-        <div className='justify-content-center align-items-center text-danger-emphasis pt-5'>
+        <div className='justify-content-center align-items-center text-danger-emphasis pt-5 mx-3'>
             <div className='text-center pt-5'>
                 <div className=' pt-5'>
                     <div className=' pt-5'>
