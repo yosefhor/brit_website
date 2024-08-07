@@ -89,8 +89,8 @@ export default function ContactForm() {
                     {t('contact.content.rabbi.description')}
                 </p>
                 <p>
-                    {t('contact.content.contactInfo.landLine.title')}: <a href="tel:+49928151741">+49(0)9281-51741</a><br />
-                    {t('contact.content.contactInfo.phone.title')}: <a href="tel:+491728551010">+49(0)172-8551010</a><br />
+                    {t('contact.content.contactInfo.landLine.title')}: <a href="tel:+49928151741">{t('contact.content.contactInfo.landLine.number')}</a><br />
+                    {t('contact.content.contactInfo.phone.title')}: <a href="tel:+491728551010">{t('contact.content.contactInfo.phone.number')}</a><br />
                     {t('contact.content.contactInfo.email.title')}: <a href="mailto:goldbergmirjam@gmail.com">goldbergmirjam@gmail.com </a><br />
                     {t('contact.content.contactInfo.homepage.title')}: <a href="http://rabbi-david-goldberg.netlify.app">www.rabbi-david-goldberg.netlify.app</a><br />
                 </p>

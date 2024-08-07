@@ -1,4 +1,4 @@
-import logo from "../logo.jpeg";
+import logo from "../logo.jpg";
 import "bootstrap/dist/css/bootstrap.css";
 import { useTranslation } from 'react-i18next';
 import germanyFlag from '../germany-flag.ico';
@@ -37,22 +37,19 @@ function Navbar() {
                 </div>)
         }
     ];
+
     const filteredOptions = options.filter(option => option.value !== savedLanguage);
 
     const customStyles = {
         control: (provided) => ({
             ...provided,
-            minHeight: '35px',
-            border: 'none',
             boxShadow: 'none',
-            padding: '0px',
-            display: 'flex',
-            alignItems: 'center',
+            border: 'none',
             background: 'transparent',
         }),
-        option: (provided, state) => ({
+        option: (provided) => ({
             ...provided,
-            padding: '0.2em',
+            padding: '0.1em',
             backgroundColor: 'transparent',
             '&:hover': {
                 backgroundColor: 'rgba(0, 0, 0, 0)',
@@ -74,48 +71,44 @@ function Navbar() {
             ...provided,
             padding: '0px',
         }),
-        indicatorsContainer: (provided) => ({
-            ...provided,
-            padding: '0px',
-        }),
         valueContainer: (provided) => ({
             ...provided,
             padding: '0px',
+        }),
+        singleValue: (provided) => ({
+            ...provided,
+            minWidth: '3.1em',
         }),
     };
 
     return (
         <header className=" sticky-top">
-                <div className=" px-3 container-fluid align-content-center bg-info-subtle" style={{ height: '100px' }}>
-                    <div className="row align-items-center">
-                        <div className="col-auto mx-3 d-none d-md-inline-flex">
-                            <Link to="/">
-                                <img src={logo} alt="Logo" className="me-5 rounded-3 shadow" style={{ height: '5em' }} />
-                            </Link>
-                        </div>
-                        <div className="col d-flex justify-content-between align-items-center">
-                            <h1 className="text-danger fs-2">{t('header.title')}</h1>
-                            <div className="desktop-flags d-md-flex mx-4">
-                                <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('de')}><img alt="German flag" src={germanyFlag} />Deutsch</button>
-                                <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('en')}><img alt="USA flag" src={usaFlag} />English</button>
-                                <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('he')}><img alt="Israel flag" src={israelFlag} />עברית</button>
-                            </div>
-                                <Select className="mobile-flags" options={filteredOptions} defaultValue={options.find(option => option.value === savedLanguage)} styles={customStyles} isSearchable={false} components={{ IndicatorSeparator: () => null }} onChange={(e) => changeLanguage(e.value)} />
-                        </div>
-                    </div>
+            <div className="container-fluid bg-info-subtle justify-content-between align-items-center d-flex px-md-5" style={{ height: '100px' }}>
+                <div className="row align-items-center">
+                    <Link to="/" className=" col-auto">
+                        <img src={logo} alt="Logo" className="rounded-1 shadow" style={{ height: '6em' }} />
+                    </Link>
+                    <h1 className="text-danger fst-italic fs-2 col">{t('header.title')}</h1>
                 </div>
+                <div className="desktop-flags d-md-flex ">
+                    <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('de')}><img alt="German flag" src={germanyFlag} />Deutsch</button>
+                    <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('en')}><img alt="USA flag" src={usaFlag} />English</button>
+                    <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('he')}><img alt="Israel flag" src={israelFlag} />עברית</button>
+                </div>
+                <Select className="mobile-flags" options={filteredOptions} defaultValue={options.find(option => option.value === savedLanguage)} styles={customStyles} isSearchable={false} components={{ IndicatorSeparator: () => null }} onChange={(e) => changeLanguage(e.value)} />
+            </div>
             <div className="bg-light">
-                <nav className="container navbar navbar-expand-sm px-2">
+                <nav className=" ms-sm-5 navbar navbar-expand-sm px-2">
                     <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarContent">
-                        <div className=" navbar-nav">
-                            <a className="nav-link active" aria-current="page" href="/">{t('header.home')}</a>
-                            <a className="nav-link" href="aboutMe">{t('header.aboutMe')}</a>
-                            <a className="nav-link" href="aboutBritMilah">{t('header.aboutBritMilah')}</a>
-                            <a className="nav-link" href="costs">{t('header.costs')}</a>
-                            <a className="nav-link" href="contact">{t('header.contact')}</a>
+                        <div className=" navbar-nav ">
+                            <a className="nav-link active mx-md-2" aria-current="page" href="/">{t('header.home')}</a>
+                            <a className="nav-link mx-md-2" href="aboutMe">{t('header.aboutMe')}</a>
+                            <a className="nav-link mx-md-2" href="aboutBritMilah">{t('header.aboutBritMilah')}</a>
+                            <a className="nav-link mx-md-2" href="costs">{t('header.costs')}</a>
+                            <a className="nav-link mx-md-2" href="contact">{t('header.contact')}</a>
                         </div>
                     </div>
                 </nav>

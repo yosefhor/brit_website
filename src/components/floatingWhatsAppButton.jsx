@@ -1,6 +1,7 @@
 import React from 'react';
 import { FloatingWhatsApp } from 'react-floating-whatsapp';
 import { useTranslation } from 'react-i18next';
+import logoWhatsApp from '../logoWhatsApp.jpg'
 
 export default function FloatingWhatsAppButton() {
   const { t } = useTranslation();
@@ -11,7 +12,7 @@ export default function FloatingWhatsAppButton() {
       accountName="Rabbiner David Goldberg"
     //   statusMessage=""
       chatMessage={t('FloatingWhatsAppButton.chatMessage')}
-    //   avatar="path_to_your_avatar_image"
+      avatar={logoWhatsApp}
       allowClickAway
       notification
       notificationSound
