@@ -104,11 +104,11 @@ function Navbar() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarContent">
                         <div className=" navbar-nav ">
-                            <a className="nav-link active mx-md-2" aria-current="page" href="/">{t('header.home')}</a>
-                            <a className="nav-link mx-md-2" href="aboutMe">{t('header.aboutMe')}</a>
-                            <a className="nav-link mx-md-2" href="aboutBritMilah">{t('header.aboutBritMilah')}</a>
-                            <a className="nav-link mx-md-2" href="costs">{t('header.costs')}</a>
-                            <a className="nav-link mx-md-2" href="contact">{t('header.contact')}</a>
+                            <Link className="nav-link active mx-md-2" aria-current="page" to="/">{t('header.home')}</Link>
+                            <Link className="nav-link mx-md-2" to="aboutMe">{t('header.aboutMe')}</Link>
+                            <Link className="nav-link mx-md-2" to="aboutBritMilah">{t('header.aboutBritMilah')}</Link>
+                            <Link className="nav-link mx-md-2" to="costs">{t('header.costs')}</Link>
+                            <Link className="nav-link mx-md-2" to="contact">{t('header.contact')}</Link>
                         </div>
                     </div>
                 </nav>
