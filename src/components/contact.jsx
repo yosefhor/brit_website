@@ -92,14 +92,14 @@ export default function ContactForm() {
                     {t('contact.content.contactInfo.landLine.title')}: <a href="tel:+49928151741">{t('contact.content.contactInfo.landLine.number')}</a><br />
                     {t('contact.content.contactInfo.phone.title')}: <a href="tel:+491728551010">{t('contact.content.contactInfo.phone.number')}</a><br />
                     {t('contact.content.contactInfo.email.title')}: <a href="mailto:goldbergmirjam@gmail.com">goldbergmirjam@gmail.com </a><br />
-                    {t('contact.content.contactInfo.homepage.title')}: <a href="http://rabbi-david-goldberg.netlify.app">www.rabbi-david-goldberg.netlify.app</a><br />
+                    {t('contact.content.contactInfo.homepage.title')}: <a href="http://rabbinergoldberg.de">www.rabbinergoldberg.de</a><br />
                 </p>
                 <div className='row-cols-xl-2'>
                     <p className='fw-medium'>
                         {t('contact.content.contactForm.description')}
                     </p>
                     <form ref={form} onSubmit={sendEmail}>
-                        <label className='form-label' htmlFor='name'>{t('contact.content.contactForm.labels.name.title')}<span className='text-danger'>*</span></label>
+                        <label className='form-label mb-0 mt-2' htmlFor='name'>{t('contact.content.contactForm.labels.name.title')}<span className='text-danger'>*</span></label>
                         <div className='input-group'>
                             <span className='input-group-text'>
                                 <i className="bi bi-person-fill"></i>
@@ -107,7 +107,7 @@ export default function ContactForm() {
                             <input name='name' required className='form-control' type='text' placeholder={t('contact.content.contactForm.labels.name.placeholder')} value={name} onChange={(e) => { setName(e.target.value) }}></input>
                         </div>
 
-                        <label className='form-label' htmlFor='lineNumber'>{t('contact.content.contactForm.labels.lineNumber.title')}</label>
+                        <label className='form-label mb-0 mt-2' htmlFor='lineNumber'>{t('contact.content.contactForm.labels.lineNumber.title')}</label>
                         <div className='input-group'>
                             <span className='input-group-text'>
                                 <i className="bi bi-telephone-fill"></i>
@@ -115,7 +115,7 @@ export default function ContactForm() {
                             <input name='lineNumber' className='form-control' inputMode='numeric' type='text' placeholder={t('contact.content.contactForm.labels.lineNumber.placeholder')} value={lineNumber} onChange={(e) => { setLineNumber(e.target.value) }} onKeyDown={(event) => { if (/[A-Za-zא-ת]/.test(event.key) && event.key !== 'Backspace' && !(event.ctrlKey)) { event.preventDefault(); } }}></input>
                         </div>
 
-                        <label className='form-label' htmlFor='phoneNumber'>{t('contact.content.contactForm.labels.phoneNumber.title')}<span className='text-danger'>*</span></label>
+                        <label className='form-label mb-0 mt-2' htmlFor='phoneNumber'>{t('contact.content.contactForm.labels.phoneNumber.title')}<span className='text-danger'>*</span></label>
                         <div className='input-group'>
                             <span className='input-group-text'>
                                 <i className="bi bi-tablet-fill"></i>
@@ -315,7 +315,7 @@ export default function ContactForm() {
                             <input name='phoneNumber' required className='form-control' type='text' inputMode='numeric' placeholder={t('contact.content.contactForm.labels.phoneNumber.placeholder')} value={phoneNumber} onChange={(e) => { setPhoneNumber(e.target.value) }} onKeyDown={(event) => { if (/[A-Za-zא-ת]/.test(event.key) && event.key !== 'Backspace' && !(event.ctrlKey)) { event.preventDefault(); } }}></input>
                         </div>
 
-                        <label className='form-label' htmlFor='email'>{t('contact.content.contactForm.labels.email.title')}</label>
+                        <label className='form-label mb-0 mt-2' htmlFor='email'>{t('contact.content.contactForm.labels.email.title')}</label>
                         <div className='input-group'>
                             <span className='input-group-text'>
                                 <i className="bi bi-envelope-at-fill"></i>
@@ -323,7 +323,7 @@ export default function ContactForm() {
                             <input name='email' className='form-control' type='email' placeholder={t('contact.content.contactForm.labels.email.placeholder')} value={email} onChange={(e) => { setEmail(e.target.value) }}></input>
                         </div>
 
-                        <label className='form-label' htmlFor='message'>{t('contact.content.contactForm.labels.message.title')}</label>
+                        <label className='form-label mb-0 mt-2' htmlFor='message'>{t('contact.content.contactForm.labels.message.title')}</label>
                         <textarea name='message' className='form-control' placeholder={t('contact.content.contactForm.labels.message.placeholder')} value={message} style={{ height: '10em' }} onChange={(e) => { setMessage(e.target.value) }}></textarea>
                         <div className='row justify-content-around'>
                             <button type='button' onClick={clearFields} className='col-3 my-3 btn btn-outline-secondary'>{t('contact.content.contactForm.buttons.clearFields')}</button>
