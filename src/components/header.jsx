@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from "../logo.jpg";
 import "bootstrap/dist/css/bootstrap.css";
 import { useTranslation } from 'react-i18next';
@@ -12,10 +12,24 @@ import { Link } from "react-router-dom";
 function Navbar() {
     const { t, i18n } = useTranslation();
     const savedLanguage = localStorage.getItem('language') || 'de';
+    const [selectedLanguage, setSelectedLanguage] = useState(savedLanguage);
+    useEffect(() => {
+        const updateFlagOnResize = () => {
+            const currentLanguage = localStorage.getItem('language') || 'de';
+            setSelectedLanguage(currentLanguage);
+        };
+        window.addEventListener('resize', updateFlagOnResize);
+        updateFlagOnResize();
+
+        return () => {
+            window.removeEventListener('resize', updateFlagOnResize);
+        };
+    }, []);
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
         localStorage.setItem('language', lng);
+        setSelectedLanguage(lng);
     };
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -106,7 +120,7 @@ function Navbar() {
                     <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('en')}><img alt="USA flag" src={usaFlag} />English</button>
                     <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('he')}><img alt="Israel flag" src={israelFlag} />עברית</button>
                 </div>
-                <Select className="mobile-flags" options={filteredOptions} defaultValue={options.find(option => option.value === savedLanguage)} styles={customStyles} isSearchable={false} components={{ IndicatorSeparator: () => null }} onChange={(e) => changeLanguage(e.value)} />
+                <Select className="mobile-flags" options={filteredOptions} defaultValue={options.find(option => option.value === selectedLanguage)} key={selectedLanguage} styles={customStyles} isSearchable={false} components={{ IndicatorSeparator: () => null }} onChange={(e) => changeLanguage(e.value)} />
             </div>
             <div className="bg-light">
                 <nav className="ms-sm-5 navbar navbar-expand-sm px-2">
