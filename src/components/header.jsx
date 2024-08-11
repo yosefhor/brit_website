@@ -25,7 +25,7 @@ function Navbar() {
     };
 
     const handleLinkClick = () => {
-        setIsMenuOpen(false); // סוגר את התפריט אחרי לחיצה על קישור
+        setIsMenuOpen(false);
     };
 
     const options = [

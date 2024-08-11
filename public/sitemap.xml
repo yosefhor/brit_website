@@ -1,39 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    
     <url>
         <loc>https://rabbinergoldberg.de/</loc>
         <lastmod>2024-08-07</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="de" href="https://rabbinergoldberg.de/" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://rabbinergoldberg.de/" />
+        <xhtml:link rel="alternate" hreflang="he" href="https://rabbinergoldberg.de/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://rabbinergoldberg.de/" />
     </url>
+
     <url>
         <loc>https://rabbinergoldberg.de/aboutMe</loc>
         <lastmod>2024-08-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="de" href="https://rabbinergoldberg.de/aboutMe" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://rabbinergoldberg.de/aboutMe" />
+        <xhtml:link rel="alternate" hreflang="he" href="https://rabbinergoldberg.de/aboutMe" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://rabbinergoldberg.de/aboutMe" />
     </url>
+
     <url>
         <loc>https://rabbinergoldberg.de/aboutBritMilah</loc>
         <lastmod>2024-08-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="de" href="https://rabbinergoldberg.de/aboutBritMilah" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://rabbinergoldberg.de/aboutBritMilah" />
+        <xhtml:link rel="alternate" hreflang="he" href="https://rabbinergoldberg.de/aboutBritMilah" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://rabbinergoldberg.de/aboutBritMilah" />
     </url>
+
     <url>
         <loc>https://rabbinergoldberg.de/costs</loc>
         <lastmod>2024-08-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="de" href="https://rabbinergoldberg.de/costs" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://rabbinergoldberg.de/costs" />
+        <xhtml:link rel="alternate" hreflang="he" href="https://rabbinergoldberg.de/costs" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://rabbinergoldberg.de/costs" />
     </url>
+
     <url>
         <loc>https://rabbinergoldberg.de/contact</loc>
         <lastmod>2024-08-07</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="de" href="https://rabbinergoldberg.de/contact" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://rabbinergoldberg.de/contact" />
+        <xhtml:link rel="alternate" hreflang="he" href="https://rabbinergoldberg.de/contact" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://rabbinergoldberg.de/contact" />
     </url>
+
     <url>
         <loc>https://rabbinergoldberg.de/notFound</loc>
         <lastmod>2024-08-07</lastmod>
         <changefreq>never</changefreq>
         <priority>0.1</priority>
+        <xhtml:link rel="alternate" hreflang="de" href="https://rabbinergoldberg.de/notFound" />
+        <xhtml:link rel="alternate" hreflang="en" href="https://rabbinergoldberg.de/notFound" />
+        <xhtml:link rel="alternate" hreflang="he" href="https://rabbinergoldberg.de/notFound" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://rabbinergoldberg.de/notFound" />
     </url>
+    
 </urlset>

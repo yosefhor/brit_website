@@ -23,19 +23,28 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object":"^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "eslint-plugin-i18next": "^6.0.9"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "i18n:scan": "i18next-scanner --config i18next-scanner.config.js",
+    "i18n:extract": "i18next-scanner --config i18next-scanner.config.js --extract"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
+      "plugin:i18next/recommended"
+    ],
+    "plugins": [
+      "i18next"
+    ],
+    "rules": {
+      "i18next/no-literal-string": "off"
+    }
   },
   "browserslist": {
     "production": [

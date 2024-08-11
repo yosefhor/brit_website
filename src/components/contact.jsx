@@ -26,7 +26,7 @@ export default function ContactForm() {
     const form = useRef();
 
     const sendWhatsAppNotification = async (formData) => {
-        const phoneNumber = '972552706269';
+        const phoneNumber = '491728551010';
         const apiKey = process.env.REACT_APP_WHATSAPP_API;
         const lineNumberField = formData.lineNumber ? `\nline Number: ${formData.lineNumber}` : '';
         const emailField = formData.email ? `\nEmail: ${formData.email}` : '';
