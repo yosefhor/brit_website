@@ -326,8 +326,8 @@ export default function ContactForm() {
                         <label className='form-label mb-0 mt-2' htmlFor='message'>{t('contact.content.contactForm.labels.message.title')}</label>
                         <textarea name='message' className='form-control' placeholder={t('contact.content.contactForm.labels.message.placeholder')} value={message} style={{ height: '10em' }} onChange={(e) => { setMessage(e.target.value) }}></textarea>
                         <div className='row justify-content-around'>
-                            <button type='button' onClick={clearFields} className='col-3 my-3 btn btn-outline-secondary'>{t('contact.content.contactForm.buttons.clearFields')}</button>
-                            <button type='submit' className='col-3 my-3 btn btn-success' value='send'>{t('contact.content.contactForm.buttons.send')}</button>
+                            <button type='button' onClick={clearFields} className='col-4 my-3 btn btn-outline-secondary'>{t('contact.content.contactForm.buttons.clearFields')}</button>
+                            <button type='submit' className='col-4 my-3 btn btn-success' value='send'>{t('contact.content.contactForm.buttons.send')}</button>
                         </div>
                     </form>
                 </div>
