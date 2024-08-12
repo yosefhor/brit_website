@@ -93,7 +93,7 @@ function Navbar() {
     };
 
     return (
-        <header className="sticky-top">
+        <header className="sticky-top header_margin">
             <div className="container-fluid justify-content-between align-items-center d-flex px-md-5 border_header" style={{ height: '100px' }}>
                 <div className="row align-items-center">
                     <Link to="/" className="col-auto" onClick={handleLinkClick}>
@@ -109,7 +109,7 @@ function Navbar() {
                 <Select className="mobile-flags" options={filteredOptions} defaultValue={options.find(option => option.value === savedLanguage)} styles={customStyles} isSearchable={false} components={{ IndicatorSeparator: () => null }} onChange={(e) => changeLanguage(e.value)} />
             </div>
             <div className="bg-light">
-                <nav className="navbar fixed-top bg-body-tertiary">
+                <nav className="navbar fixed-top bg-body-tertiary navbar-expand-lg">
                     <button className="navbar-toggler" type="button" onClick={handleToggleMenu} data-bs-toggle="collapse" data-bs-target="#navbarContent">
                         <span className="navbar-toggler-icon"></span>
                     </button>
