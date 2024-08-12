@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import logo from "../logo.jpg";
 import "bootstrap/dist/css/bootstrap.css";
 import { useTranslation } from 'react-i18next';
@@ -12,24 +12,10 @@ import { Link } from "react-router-dom";
 function Navbar() {
     const { t, i18n } = useTranslation();
     const savedLanguage = localStorage.getItem('language') || 'de';
-    const [selectedLanguage, setSelectedLanguage] = useState(savedLanguage);
-    useEffect(() => {
-        const updateFlagOnResize = () => {
-            const currentLanguage = localStorage.getItem('language') || 'de';
-            setSelectedLanguage(currentLanguage);
-        };
-        window.addEventListener('resize', updateFlagOnResize);
-        updateFlagOnResize();
-
-        return () => {
-            window.removeEventListener('resize', updateFlagOnResize);
-        };
-    }, []);
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
         localStorage.setItem('language', lng);
-        setSelectedLanguage(lng);
     };
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,7 +25,7 @@ function Navbar() {
     };
 
     const handleLinkClick = () => {
-        setIsMenuOpen(false);
+        setIsMenuOpen(false); // סוגר את התפריט אחרי לחיצה על קישור
     };
 
     const options = [
@@ -108,22 +94,22 @@ function Navbar() {
 
     return (
         <header className="sticky-top">
-            <div className="container-fluid bg-info-subtle justify-content-between align-items-center d-flex px-md-5" style={{ height: '100px' }}>
+            <div className="container-fluid justify-content-between align-items-center d-flex px-md-5 border_header" style={{ height: '100px' }}>
                 <div className="row align-items-center">
                     <Link to="/" className="col-auto" onClick={handleLinkClick}>
                         <img src={logo} alt="Logo" className="rounded-1 shadow" style={{ height: '6em' }} />
                     </Link>
-                    <h1 className="text-danger fst-italic fs-2 col">{t('header.title')}</h1>
+                    <h1 className="text_header fst-italic fs-2 col">{t('header.title')}</h1>
                 </div>
                 <div className="desktop-flags d-md-flex">
-                    <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('de')}><img alt="German flag" src={germanyFlag} />Deutsch</button>
-                    <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('en')}><img alt="USA flag" src={usaFlag} />English</button>
-                    <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('he')}><img alt="Israel flag" src={israelFlag} />עברית</button>
+                    <button style={{ boxShadow: 'none', border: 'none', color: '#123B77'}} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('de')}><img alt="German flag" src={germanyFlag} />Deutsch</button>
+                    <button style={{ boxShadow: 'none', border: 'none', color: '#123B77' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('en')}><img alt="USA flag" src={usaFlag} />English</button>
+                    <button style={{ boxShadow: 'none', border: 'none', color: '#123B77' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('he')}><img alt="Israel flag" src={israelFlag} />עברית</button>
                 </div>
-                <Select className="mobile-flags" options={filteredOptions} defaultValue={options.find(option => option.value === selectedLanguage)} key={selectedLanguage} styles={customStyles} isSearchable={false} components={{ IndicatorSeparator: () => null }} onChange={(e) => changeLanguage(e.value)} />
+                <Select className="mobile-flags" options={filteredOptions} defaultValue={options.find(option => option.value === savedLanguage)} styles={customStyles} isSearchable={false} components={{ IndicatorSeparator: () => null }} onChange={(e) => changeLanguage(e.value)} />
             </div>
             <div className="bg-light">
-                <nav className="ms-sm-5 navbar navbar-expand-sm px-2">
+                <nav className="navbar fixed-top bg-body-tertiary">
                     <button className="navbar-toggler" type="button" onClick={handleToggleMenu} data-bs-toggle="collapse" data-bs-target="#navbarContent">
                         <span className="navbar-toggler-icon"></span>
                     </button>

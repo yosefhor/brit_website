@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <>
-      <h1 className='my-4'>
+      <h1 className='my-4 text_header'>
         {t('home.welcome')}
       </h1>
       <div className='lead fw-normal'>

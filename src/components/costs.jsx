@@ -6,7 +6,7 @@ export default function Cost() {
 
     return (
         <div>
-            <h1 className='my-4'>{t('costs.title')}</h1>
+            <h1 className='my-4 text_header'>{t('costs.title')}</h1>
             <div className='lead fw-normal'>
                 {t('costs.paragraphs', { returnObjects: true }).map((paragraph, index) => (
                     <p key={index}>{paragraph}</p>

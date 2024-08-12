@@ -13,11 +13,11 @@ export default function AboutBritMilah() {
 
     return (
         <div className='lead fw-normal'>
-            <h1 className='my-4'>{t('about_brit_milah.header')}</h1>
+            <h1 className='my-4 text_header'>{t('about_brit_milah.header')}</h1>
             <div className=' accordion' id='accrParent'>
                 <div className=' accordion-item'>
                     <div className=' accordion-header'>
-                        <button className=' accordion-button' data-bs-toggle='collapse' data-bs-target='#part1'><h3>{t('about_brit_milah.sections.0.title')}</h3></button>
+                        <button className=' accordion-button' data-bs-toggle='collapse' data-bs-target='#part1'><h4>{t('about_brit_milah.sections.0.title')}</h4></button>
                     </div>
                     <div id='part1' className=' bg-light accordion-collapse collapse show p-3' data-bs-parent='#accrParent'>
                         <div className=' accordion-body'>
@@ -30,7 +30,7 @@ export default function AboutBritMilah() {
                 </div>
                 <div className=' accordion-item'>
                     <div className=' accordion-header'>
-                        <button className=' accordion-button' data-bs-toggle='collapse' data-bs-target='#part2'><h3>{t('about_brit_milah.sections.1.title')}</h3></button>
+                        <button className=' accordion-button' data-bs-toggle='collapse' data-bs-target='#part2'><h4>{t('about_brit_milah.sections.1.title')}</h4></button>
                     </div>
                     <div id='part2' className=' bg-light accordion-collapse collapse p-3' data-bs-parent='#accrParent'>
                         <div className=' accordion-body'>
@@ -58,7 +58,7 @@ export default function AboutBritMilah() {
                 </div>
                 <div className=' accordion-item'>
                     <div className=' accordion-header'>
-                        <button className=' accordion-button' data-bs-toggle='collapse' data-bs-target='#part3'><h3>{t('about_brit_milah.sections.2.title')}</h3></button>
+                        <button className=' accordion-button' data-bs-toggle='collapse' data-bs-target='#part3'><h4>{t('about_brit_milah.sections.2.title')}</h4></button>
                     </div>
                     <div id='part3' className=' bg-light accordion-collapse collapse p-3' data-bs-parent='#accrParent'>
                         <div className=' accordion-body'>
@@ -70,7 +70,7 @@ export default function AboutBritMilah() {
                 </div>
                 <div className=' accordion-item'>
                     <div className=' accordion-header'>
-                        <button className=' accordion-button' data-bs-toggle='collapse' data-bs-target='#part4'><h3>{t('about_brit_milah.sections.3.title')}</h3></button>
+                        <button className=' accordion-button' data-bs-toggle='collapse' data-bs-target='#part4'><h4>{t('about_brit_milah.sections.3.title')}</h4></button>
                     </div>
                     <div id='part4' className=' bg-light accordion-collapse collapse p-3' data-bs-parent='#accrParent'>
                         <div className=' accordion-body'>

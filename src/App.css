@@ -17,3 +17,61 @@
         display: none;
     }
 }
+
+.fixed-top{
+top: auto !important;
+padding: 10px !important;
+}
+
+.border_header{
+border-bottom: 2px solid #123B77;
+background-color: white;
+}
+
+.fw-normal{
+font-size: 18px !important;
+}
+
+.accordion-button{
+    font-size: 14px !important;
+}
+
+.text_header {
+    color: #123B77;
+    font-size: 32px;
+}
+
+.nav-link {
+    color: #123B77 !important;
+}
+
+.nav-link:hover {
+    color: #2565C7 !important
+}
+
+.button_send {
+    background-color: #2565C7;
+    color: white;
+    border-radius: 25px;
+    border: 0px;
+    border: 2px solid #2565C7;
+    height: 36px;
+}
+
+.button_send:hover {
+    background-color: white;
+    color: #2565C7;
+}
+
+.button_cleer {
+    background-color: white;
+    color: #2565C7;
+    border-radius: 25px;
+    border: 2px solid #2565C7;
+    height: 36px;
+}
+
+.button_cleer:hover {
+    background-color: #2565C7;
+    color: white;
+}

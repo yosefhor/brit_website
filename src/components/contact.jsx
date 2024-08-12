@@ -3,6 +3,7 @@ import emailjs from 'emailjs-com';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../App.css';
 
 export default function ContactForm() {
     const { t } = useTranslation();
@@ -82,7 +83,7 @@ export default function ContactForm() {
 
     return (
         <div>
-            <h1 className='mt-4'>{t('contact.title')}</h1>
+            <h1 className='mt-4 text_header'>{t('contact.title')}</h1>
             <div className='lead fw-normal'>
                 <p>
                     <strong>{t('contact.content.rabbi.title')}</strong><br />
@@ -326,8 +327,8 @@ export default function ContactForm() {
                         <label className='form-label mb-0 mt-2' htmlFor='message'>{t('contact.content.contactForm.labels.message.title')}</label>
                         <textarea name='message' className='form-control' placeholder={t('contact.content.contactForm.labels.message.placeholder')} value={message} style={{ height: '10em' }} onChange={(e) => { setMessage(e.target.value) }}></textarea>
                         <div className='row justify-content-around'>
-                            <button type='button' onClick={clearFields} className='col-4 my-3 btn btn-outline-secondary'>{t('contact.content.contactForm.buttons.clearFields')}</button>
-                            <button type='submit' className='col-4 my-3 btn btn-success' value='send'>{t('contact.content.contactForm.buttons.send')}</button>
+                            <button type='button' onClick={clearFields} className='col-5 my-3 button_cleer'>{t('contact.content.contactForm.buttons.clearFields')}</button>
+                            <button type='submit' className='col-5 my-3 button_send' value='send'>{t('contact.content.contactForm.buttons.send')}</button>
                         </div>
                     </form>
                 </div>
