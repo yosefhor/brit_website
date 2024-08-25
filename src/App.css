@@ -1,3 +1,29 @@
+:root {
+    --main-color: #123B77;
+    --secondary-color: #ffffff;
+}
+
+.fw-normal {
+    font-size: 1.12em !important;
+}
+
+.accordion-item {
+    font-size: 1em !important;
+}
+
+.main_text_color {
+    color: var(--main-color) !important;
+}
+
+.main_bg_and_border_color {
+    background-color: var(--main-color) !important;
+    border-color: var(--main-color) !important;
+}
+
+.border_header {
+    border-bottom: 0.15em solid var(--main-color);
+}
+
 @media (max-width: 768px) {
     .desktop-flags {
         display: none;

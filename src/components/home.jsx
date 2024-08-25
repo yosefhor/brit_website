@@ -7,9 +7,9 @@ export default function Home() {
 
   return (
     <>
-      <h1 className='my-4'>
+      <h2 className='my-4 main_text_color'>
         {t('home.welcome')}
-      </h1>
+      </h2>
       <div className='lead fw-normal'>
         <p>
           {t('home.introduction')}

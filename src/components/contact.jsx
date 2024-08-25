@@ -82,7 +82,7 @@ export default function ContactForm() {
 
     return (
         <div>
-            <h1 className='mt-4'>{t('contact.title')}</h1>
+            <h2 className='mt-4 main_text_color'>{t('contact.title')}</h2>
             <div className='lead fw-normal'>
                 <p>
                     <strong>{t('contact.content.rabbi.title')}</strong><br />
@@ -326,8 +326,8 @@ export default function ContactForm() {
                         <label className='form-label mb-0 mt-2' htmlFor='message'>{t('contact.content.contactForm.labels.message.title')}</label>
                         <textarea name='message' className='form-control' placeholder={t('contact.content.contactForm.labels.message.placeholder')} value={message} style={{ height: '10em' }} onChange={(e) => { setMessage(e.target.value) }}></textarea>
                         <div className='row justify-content-around'>
-                            <button type='button' onClick={clearFields} className='col-3 my-3 btn btn-outline-secondary'>{t('contact.content.contactForm.buttons.clearFields')}</button>
-                            <button type='submit' className='col-3 my-3 btn btn-success' value='send'>{t('contact.content.contactForm.buttons.send')}</button>
+                            <button type='button' onClick={clearFields} className='col-5 my-3 btn btn-outline-primary border-2 rounded-pill fs-5 p-1'>{t('contact.content.contactForm.buttons.clearFields')}</button>
+                            <button type='submit' className='col-5 my-3 btn btn-primary rounded-pill fs-5 p-1' value='send'>{t('contact.content.contactForm.buttons.send')}</button>
                         </div>
                     </form>
                 </div>

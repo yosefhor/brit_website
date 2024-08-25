@@ -27,7 +27,7 @@ export default function Layout() {
                     <div className='mt-5 container col-lg-3'>
                         <Pictures />
                     </div>
-                    <div className='container mx-5'>
+                    <div className='container me-5'>
                         <Outlet />
                     </div>
                 </div>}

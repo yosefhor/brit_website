@@ -6,7 +6,7 @@ export default function AboutMe() {
 
     return (
         <>
-            <h1 className='my-4'>{t('about_me.title')}</h1>
+            <h2 className='my-4 main_text_color'>{t('about_me.title')}</h2>
             <ul className='lead fw-normal'>
                 {t('about_me.points', { returnObjects: true }).map((point, index) => (
                     <li key={index}>{point}</li>
