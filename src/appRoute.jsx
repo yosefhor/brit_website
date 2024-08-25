@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from './components/layout';
 import Home from './components/home';
@@ -18,8 +18,8 @@ export default function AppRoute() {
                     <Route path='aboutBritMilah' element={<AboutBritMilah/>}/>
                     <Route path='costs' element={<Costs/>}/>
                     <Route path='contact' element={<Contact/>}/>
-                    <Route path='*' element={<NotFound/>}/>
                 </Route>
+                <Route path='*' element={<NotFound/>}/>
             </Routes>
         </Router>
     )
