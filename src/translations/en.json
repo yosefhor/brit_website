@@ -5,6 +5,7 @@
         "home": "Home",
         "aboutMe": "About Me",
         "aboutBritMilah": "About Brit Milah",
+        "prayars": "Text for Brit Mila",
         "costs": "Costs",
         "contact": "Contact"
     },
@@ -162,6 +163,9 @@
             ],
             "signature": "Rabbi and Mohel David Goldberg"
         }
+    },
+    "prayars": {
+        "title": "Text for Brit Milah"
     },
     "costs": {
         "title": "Costs",

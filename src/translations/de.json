@@ -5,6 +5,7 @@
         "home": "Startseite",
         "aboutMe": "Über mich",
         "aboutBritMilah": "Über Brit Milah",
+        "prayars": "Text der Brit Mila",
         "costs": "Kosten",
         "contact": "Kontakt"
     },
@@ -162,6 +163,9 @@
             ],
             "signature": "Rabbiner und Mohel David Goldberg"
         }
+    },
+    "prayars": {
+        "title": "Text der Brit Milah"
     },
     "costs": {
         "title": "Kosten",
