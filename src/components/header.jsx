@@ -129,11 +129,11 @@ function Navbar() {
                     <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarContent">
                         <div className="navbar-nav">
                             <Link className="nav-link active mx-md-2 main_text_color" aria-current="page" to="/" onClick={handleLinkClick}>{t('header.home')}</Link>
-                            <Link className="nav-link mx-md-2 main_text_color" to="aboutMe" onClick={handleLinkClick}>{t('header.aboutMe')}</Link>
-                            <Link className="nav-link mx-md-2 main_text_color" to="aboutBritMilah" onClick={handleLinkClick}>{t('header.aboutBritMilah')}</Link>
-                            <Link className="nav-link mx-md-2 main_text_color" to="prayars" onClick={handleLinkClick}>{t('header.prayars')}</Link>
-                            <Link className="nav-link mx-md-2 main_text_color" to="costs" onClick={handleLinkClick}>{t('header.costs')}</Link>
-                            <Link className="nav-link mx-md-2 main_text_color" to="contact" onClick={handleLinkClick}>{t('header.contact')}</Link>
+                            <Link className="nav-link mx-md-2 main_text_color" to="/aboutMe" onClick={handleLinkClick}>{t('header.aboutMe')}</Link>
+                            <Link className="nav-link mx-md-2 main_text_color" to="/aboutBritMilah" onClick={handleLinkClick}>{t('header.aboutBritMilah')}</Link>
+                            <Link className="nav-link mx-md-2 main_text_color" to="/prayars" onClick={handleLinkClick}>{t('header.prayars')}</Link>
+                            <Link className="nav-link mx-md-2 main_text_color" to="/costs" onClick={handleLinkClick}>{t('header.costs')}</Link>
+                            <Link className="nav-link mx-md-2 main_text_color" to="/contact" onClick={handleLinkClick}>{t('header.contact')}</Link>
                         </div>
                     </div>
                 </nav>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function NotFound() {
     return (
-        <div className='container vh-100 align-content-center main_text_color text-center'>
+        <div dir='ltr' className='container vh-100 align-content-center main_text_color text-center'>
                 <h1>404 - Oops, the page you're looking for doesn't exist yet ;) </h1>
                 <h2>In the meantime, you can head back to the homepage by clicking
                 </h2>
