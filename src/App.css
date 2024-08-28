@@ -1,6 +1,19 @@
 :root {
     --main-color: #123B77;
-    --secondary-color: #ffffff;
+}
+
+.main_text_color {
+    color: var(--main-color) !important;
+}
+
+#header_title {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+#header_bg_color_and_border {
+    background-color: #e3eff7 !important;
+    height: 100px !important;
+    border-bottom: 0.15em solid var(--main-color) !important;
 }
 
 .fw-normal {
@@ -11,18 +24,6 @@
     font-size: 1em !important;
 }
 
-.main_text_color {
-    color: var(--main-color) !important;
-}
-
-.main_bg_and_border_color {
-    background-color: var(--main-color) !important;
-    border-color: var(--main-color) !important;
-}
-
-.border_header {
-    border-bottom: 0.15em solid var(--main-color);
-}
 
 @media (max-width: 768px) {
     .desktop-flags {

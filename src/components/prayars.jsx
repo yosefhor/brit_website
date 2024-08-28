@@ -8,7 +8,7 @@ export default function Prayars() {
     return (
         <>
             <Header />
-            <div dir="rtl" className=' container'>
+            <div dir="rtl" className=' container bg-light-subtle border rounded my-4'>
                 <h2 className='my-4 main_text_color'>{t('prayars.title')}</h2>
                 <p>כשמביאים את התינוק למול אומרים הקהל:</p>
                 <p><strong>בָּרוּךְ הַבָּא:</strong></p>

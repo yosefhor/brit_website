@@ -8,7 +8,7 @@ import israelFlag from '../israel-flag.ico';
 import Select from 'react-select';
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Header() {
     const { t, i18n } = useTranslation();
     const savedLanguage = localStorage.getItem('language') || 'de';
     const [selectedLanguage, setSelectedLanguage] = useState(savedLanguage);
@@ -107,12 +107,15 @@ function Navbar() {
 
     return (
         <header className="sticky-top">
-            <div className="container-fluid justify-content-between align-items-center d-flex px-md-5 border_header" style={{ background: '#e3eff7', height: '100px' }}>
+            <div id='header_bg_color_and_border' className="container-fluid justify-content-between align-items-center d-flex px-md-5" dir='ltr'>
                 <div className="row align-items-center">
                     <Link to="/" className="col-auto" onClick={handleLinkClick}>
                         <img src={logo} alt="Logo" className="rounded-1 shadow" style={{ height: '6em' }} />
                     </Link>
-                    <h1 className="main_text_color fst-italic fs-2 col">{t('header.title')}</h1>
+                    <div id='header_title' className="main_text_color fst-italic col ms-md-3">
+                        <h2 className=' mb-0'>{t('header.title1line')}</h2>
+                        <h6 className=' mt-0'>{t('header.title2line')}</h6>
+                    </div>
                 </div>
                 <div className="desktop-flags d-md-flex">
                     <button style={{ boxShadow: 'none', border: 'none' }} className="btn d-flex flex-column align-items-center" onClick={() => changeLanguage('de')}><img alt="German flag" src={germanyFlag} />Deutsch</button>
@@ -142,4 +145,4 @@ function Navbar() {
     );
 }
 
-export default Navbar;
+export default Header;

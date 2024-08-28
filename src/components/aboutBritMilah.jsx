@@ -19,7 +19,7 @@ export default function AboutBritMilah() {
                     <div className=' accordion-header'>
                         <button className=' accordion-button' data-bs-toggle='collapse' data-bs-target='#part1'><h4>{t('about_brit_milah.sections.0.title')}</h4></button>
                     </div>
-                    <div id='part1' className=' bg-light accordion-collapse collapse show p-3' data-bs-parent='#accrParent'>
+                    <div id='part1' className=' bg-light-subtle accordion-collapse collapse show p-3' data-bs-parent='#accrParent'>
                         <div className=' accordion-body'>
                             {t('about_brit_milah.sections.0.content', { returnObjects: true }).map((paragraph, index) => (
                                 <p key={index}>{paragraph}</p>
@@ -32,7 +32,7 @@ export default function AboutBritMilah() {
                     <div className=' accordion-header'>
                         <button className=' accordion-button' data-bs-toggle='collapse' data-bs-target='#part2'><h4>{t('about_brit_milah.sections.1.title')}</h4></button>
                     </div>
-                    <div id='part2' className=' bg-light accordion-collapse collapse p-3' data-bs-parent='#accrParent'>
+                    <div id='part2' className=' bg-light-subtle accordion-collapse collapse p-3' data-bs-parent='#accrParent'>
                         <div className=' accordion-body'>
                             <p>
                                 {t('about_brit_milah.sections.1.content.0')}
@@ -60,7 +60,7 @@ export default function AboutBritMilah() {
                     <div className=' accordion-header'>
                         <button className=' accordion-button' data-bs-toggle='collapse' data-bs-target='#part3'><h4>{t('about_brit_milah.sections.2.title')}</h4></button>
                     </div>
-                    <div id='part3' className=' bg-light accordion-collapse collapse p-3' data-bs-parent='#accrParent'>
+                    <div id='part3' className=' bg-light-subtle accordion-collapse collapse p-3' data-bs-parent='#accrParent'>
                         <div className=' accordion-body'>
                             {t('about_brit_milah.sections.2.content', { returnObjects: true }).map((paragraph, index) => (
                                 <p key={index}>{paragraph}</p>
@@ -72,7 +72,7 @@ export default function AboutBritMilah() {
                     <div className=' accordion-header'>
                         <button className=' accordion-button' data-bs-toggle='collapse' data-bs-target='#part4'><h4>{t('about_brit_milah.sections.3.title')}</h4></button>
                     </div>
-                    <div id='part4' className=' bg-light accordion-collapse collapse p-3' data-bs-parent='#accrParent'>
+                    <div id='part4' className=' bg-light-subtle accordion-collapse collapse p-3' data-bs-parent='#accrParent'>
                         <div className=' accordion-body'>
                             <p>{t('about_brit_milah.sections.3.content.0')}</p>
                             <p>{t('about_brit_milah.sections.3.content.1')}</p>
@@ -88,7 +88,7 @@ export default function AboutBritMilah() {
             </div>
             <h3 className=' mt-5 mb-0'>{t('about_brit_milah.GottHatImmerRecht.header')}</h3>
             <h6>{t('about_brit_milah.GottHatImmerRecht.author')}</h6>
-            <div className=' bg-light rounded-3 mb-5 p-4 ' ref={ArtikelüberBeschneidung}>
+            <div className=' bg-light-subtle border rounded mb-5 p-4 ' ref={ArtikelüberBeschneidung}>
                 {t('about_brit_milah.GottHatImmerRecht.content', { returnObjects: true }).map((paragraph, index) => (
                     typeof paragraph === 'string' ? <p key={index}>{paragraph}</p> :
                         paragraph.type === 'ul' ? (
