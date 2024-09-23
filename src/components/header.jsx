@@ -109,12 +109,12 @@ function Header() {
         <header className="sticky-top">
             <div id='header_bg_color_and_border' className="container-fluid justify-content-between align-items-center d-flex px-md-5" dir='ltr'>
                 <div className="row align-items-center">
-                    <Link to="/" className="col-auto" onClick={handleLinkClick}>
+                    <Link to="/" className="col-auto mx-0 ps-0 ps-sm-3" onClick={handleLinkClick}>
                         <img src={logo} alt="Logo" className="rounded-1 shadow" style={{ height: '6em' }} />
                     </Link>
-                    <div id='header_title' className="main_text_color fst-italic col ms-md-3">
-                        <h2 className=' mb-0'>{t('header.title1line')}</h2>
-                        <h6 className=' mt-0'>{t('header.title2line')}</h6>
+                    <div id='header_title' className="main_text_color fst-italic col px-0 px-md-3 ms-md-3 img-fluid">
+                        <h1 className=' mb-0 custom_header_font_1'>{t('header.title1line')}</h1>
+                        <h6 className=' mt-0 custom_header_font_2'>{t('header.title2line')}</h6>
                     </div>
                 </div>
                 <div className="desktop-flags d-md-flex">
