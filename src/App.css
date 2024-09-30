@@ -7,12 +7,12 @@
 }
 
 .custom_header_font_1 {
-    font-family: "Dancing Script", cursive;
-    font-size: clamp(25px,calc(10px + 3vw),45px);
+    font-family: "Dancing Script", "Fredoka", sans-serif, cursive;
+    font-size: clamp(25px, calc(10px + 3vw), 45px);
 }
 
 .custom_header_font_2 {
-    font-size: clamp(12px,calc(5px + 1.5vw),22px);
+    font-size: clamp(12px, calc(5px + 1.5vw), 22px);
     font-weight: 400;
 }
 
